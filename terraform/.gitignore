@@ -1,0 +1,40 @@
+# Diretório de trabalho do Terraform: providers e módulos baixados,
+# reconstruído por `terraform init`.
+**/.terraform/
+
+# State e backups. Nunca versionados — contêm valores sensíveis em texto
+# claro. Com backend local o state fica só na máquina de quem aplicou;
+# faça backup dele antes de trocar de máquina ou apagar a pasta.
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+
+# Saídas de plan salvas (`terraform plan -out=...`) — binário, efêmero,
+# e carrega os mesmos segredos do state.
+*.tfplan
+*.tfplan.*
+
+# Overrides locais de desenvolvimento, que por definição não valem para o time.
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Configuração de CLI com credencial de registry.
+.terraformrc
+terraform.rc
+
+crash.log
+crash.*.log
+
+# ---------------------------------------------------------------------------
+# Versionados de propósito, não remova daqui:
+#
+#   .terraform.lock.hcl   garante o mesmo provider na sua máquina, na do
+#                         colega e no CI — sem ele o `~>` é só intenção
+#   terraform.tfvars      é o que torna a diferença entre ambientes legível;
+#                         é a configuração do ambiente, não segredo local
+#
+# Se algum dia um desses precisar guardar segredo, o segredo é que está no
+# lugar errado — use Secrets Manager/SSM e leia via data source.
+# ---------------------------------------------------------------------------
